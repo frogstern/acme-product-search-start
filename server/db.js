@@ -1,19 +1,21 @@
 const Sequelize = require('sequelize');
 const { STRING, BOOLEAN } = Sequelize;
-const conn = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/acme_products_search_db');
+const conn = new Sequelize(
+  process.env.DATABASE_URL || 'postgres://localhost/acme_products_search_db'
+);
 
 const Product = conn.define('product', {
   name: {
-    type: STRING
+    type: STRING,
   },
   inStock: {
     type: BOOLEAN,
     allowNull: false,
-    defaultValue: true
-  }
+    defaultValue: true,
+  },
 });
 
 module.exports = {
   Product,
-  conn
+  conn,
 };
